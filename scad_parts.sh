@@ -19,7 +19,7 @@ mkdir -p "$OUT"
 git add "$IN"
 git commit -m "$0 $1 auto-commit" "$IN"
 
-echo "\n**$CMD**\n\n![all.png](all.png)\n\n    use <$IN>\n    $CMD\n\n" >> "$MD"
+echo -e "\n**$CMD**\n\n![all.png](all.png)\n\n    use <$IN>\n    $CMD\n\n" >> "$MD"
 
 cat "$IN" | while read L ; do 
 	if echo "$L" | grep -q "^\s*PART" ; then
@@ -43,7 +43,7 @@ done
 openscad -o "$OUT/all.png" --viewall --autocenter --imgsize 512,512 "$IN"
 
 
-git add "$MD"
+git add "$MD" "$OUT/all.png"
 git commit -m "$0 $1" "$OUT/"
 #git commit -m "$0 $1" "$MD"
 
