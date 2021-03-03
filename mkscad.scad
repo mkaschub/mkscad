@@ -46,3 +46,4 @@ module le(h, center=false, convexity=2, scale=1, twist=0, slices=undef) { linear
 
 module re(angle = 360, r = 0) { tx(-r) rotate_extrude(angle = angle) tx(r) children(); }
 
+module cubexy(dim) { le(dim.z) square([dim.x, dim.y], center=true); }
